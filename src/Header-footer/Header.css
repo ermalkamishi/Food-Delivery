@@ -151,8 +151,6 @@
   color: #ff4d4f;
 }
 
-
-/* Mobile Menu Toggle */
 .mobile-menu-toggle {
   display: none;
   background: none;
@@ -166,7 +164,7 @@
   display: none;
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 900px) {
   .desktop-only {
     display: none;

@@ -11,11 +11,9 @@ const Footer = () => {
   const handleSubscribe = (e) => {
     e.preventDefault();
     if (newsletterEmail.trim()) {
-      // EmailJS Configuration
-      // EmailJS Configuration
       const serviceId = "service_b8l892x";
-      const templateId = "template_mrityrs"; // Updated Template ID
-      const publicKey = "B8pXmMKz0_LrstivF"; // Updated Public Key
+      const templateId = "template_mrityrs";
+      const publicKey = "B8pXmMKz0_LrstivF";
 
       const templateParams = {
         email: newsletterEmail,

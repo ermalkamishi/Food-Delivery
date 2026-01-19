@@ -337,7 +337,6 @@
   background: -webkit-linear-gradient(#ff4d4f, #ff7875);
   -webkit-background-clip: text;
   background-clip: text;
-  /* Standard property for compatibility */
   -webkit-text-fill-color: transparent;
 }
 
@@ -458,7 +457,6 @@
     padding: 4rem 1rem;
   }
 
-  /* Force gap on mobile to prevent cards from touching */
   .restaurant-list,
   .features-section {
     gap: 2rem !important;

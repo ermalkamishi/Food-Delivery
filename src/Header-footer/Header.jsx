@@ -39,7 +39,6 @@ function Header() {
           <Link to="/about" className="nav-item" onClick={closeMobileMenu}>Our Story</Link>
           <Link to="/contact" className="nav-item" onClick={closeMobileMenu}>Contact</Link>
 
-          {/* Mobile Only Actions in Nav */}
           <div className="mobile-nav-actions">
             <Link to="/cart" className="mobile-cart-link" onClick={closeMobileMenu}>
               Cart ({cartItems.length})

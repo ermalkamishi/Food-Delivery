@@ -17,14 +17,12 @@ a {
     color: inherit;
 }
 
-/* Fix for iOS default styling */
 input,
 textarea,
 button {
     font-family: inherit;
 }
 
-/* Ensure images don't overflow */
 img {
     max-width: 100%;
     display: block;

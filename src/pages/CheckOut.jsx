@@ -41,25 +41,24 @@ function CheckoutPage() {
       return;
     }
 
-    // EmailJS Configuration
     const serviceId = "service_b8l892x";
-    const templateId = "template_yeycqy9"; // Updated Order Template ID
-    const publicKey = "B8pXmMKz0_LrstivF"; // Updated Public Key
+    const templateId = "template_yeycqy9";
+    const publicKey = "B8pXmMKz0_LrstivF";
 
     const templateParams = {
       name: form.name,
-      email: form.email, // Matches {{email}} in "To Email"
-      order_id: Date.now(), // Matches {{order_id}}
+      email: form.email,
+      order_id: Date.now(),
       orders: cartItems.map(item => ({
-        name: item.itemName, // Fixed: use itemName to match CartContext
+        name: item.itemName,
         price: item.price,
         units: item.quantity,
-        image_url: item.restaurantIcon // Added image, though local paths wont work in email clients
+        image_url: item.restaurantIcon
       })),
       cost: {
         shipping: "2.99",
         tax: "0.00",
-        total: (totalPrice + 2.99).toFixed(2) // Matches {{cost.total}}
+        total: (totalPrice + 2.99).toFixed(2)
       },
       address: `${form.address}, ${form.city}`
     };
@@ -78,7 +77,6 @@ function CheckoutPage() {
 
   const navigate = useNavigate();
 
-  // Fix: Move navigation side-effect to useEffect and ensure hooks aren't skipped
   useEffect(() => {
     if (cartItems.length === 0) {
       navigate("/");

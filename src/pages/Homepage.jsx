@@ -37,7 +37,6 @@ function Home() {
           </div>
         </div>
       </div>
-
       <div className="features-section">
         <div className="feature-card">
           <div className="icon">🚀</div>
