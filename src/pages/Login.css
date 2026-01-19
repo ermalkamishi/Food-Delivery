@@ -169,4 +169,7 @@
   .auth-title {
     font-size: 1.5rem;
   }
+  .auth-card{
+    padding: 30px;
+  }
 }
