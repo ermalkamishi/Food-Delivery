@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Fix for iOS default styling */
+input,
+textarea,
+button {
+    font-family: inherit;
+}
+
+/* Ensure images don't overflow */
+img {
+    max-width: 100%;
+    display: block;
+}
