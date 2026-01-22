@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { auth } from "../firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Login.css";
 
 function LoginPage() {
@@ -9,22 +9,32 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); 
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  const checkoutMessage = location.state?.message;
+  const redirectTo = location.state?.redirectTo || "/";
 
   useEffect(() => {
     setEmail("");
     setPassword("");
-    setMessage("");
-  }, []);
+
+
+    if (checkoutMessage) {
+      setMessage(checkoutMessage);
+    } else {
+      setMessage("");
+    }
+  }, [checkoutMessage]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      setMessage(`Welcome back, ${userCredential.user.email}`);
+      await signInWithEmailAndPassword(auth, email, password);
 
-      setEmail("");
-      setPassword("");
+      navigate(redirectTo, { replace: true });
     } catch (error) {
       setMessage("Login failed. Please check your credentials.");
     }
@@ -35,31 +45,33 @@ function LoginPage() {
       <div className="auth-card">
         <h2 className="auth-title">Welcome Back</h2>
 
-        <form className="auth-form" autoComplete="off">
+        {message && <p className="auth-message">{message}</p>}
 
+        <form className="auth-form" autoComplete="off">
           <input type="text" name="fake-email" autoComplete="username" hidden />
-          <input type="password" name="fake-password" autoComplete="new-password" hidden />
+          <input
+            type="password"
+            name="fake-password"
+            autoComplete="new-password"
+            hidden
+          />
 
           <label className="auth-label">Email</label>
           <input
             type="email"
-            name="login-email"
             placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="auth-input"
-            autoComplete="off"
           />
 
           <label className="auth-label">Password</label>
           <input
             type={showPassword ? "text" : "password"}
-            name="login-password"
             placeholder="Enter your password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="auth-input"
-            autoComplete="new-password"
           />
 
           <div className="auth-options">
@@ -79,14 +91,12 @@ function LoginPage() {
 
           <button
             type="button"
-            onClick={() => navigate("/signup")} 
+            onClick={() => navigate("/signup")}
             className="auth-button secondary"
           >
             Sign Up
           </button>
         </form>
-
-        <p className="auth-message">{message}</p>
       </div>
     </div>
   );

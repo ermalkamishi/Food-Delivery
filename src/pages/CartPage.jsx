@@ -1,16 +1,30 @@
 import { useContext } from "react";
 import { CartContext } from "./CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./CartPage.css";
 
-function CartPage() {
+function CartPage({ user }) {
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  const navigate = useNavigate();
+
+  const handleProceedToCheckout = () => {
+    if (!user) {
+      navigate("/login", {
+        state: {
+          message:
+            "You can’t checkout without having an account. Please log in or sign up to continue.",
+          redirectTo: "/checkout",
+        },
+      });
+    } else {
+      navigate("/checkout");
+    }
+  };
 
   const totalPrice = cartItems.reduce((sum, item) => {
     const numericPrice = parseFloat(item.price.replace(/[^0-9.]/g, ""));
     return sum + numericPrice * item.quantity;
   }, 0);
-
 
   return (
     <div className="cart-wrapper">
@@ -35,33 +49,44 @@ function CartPage() {
               {cartItems.map((item, index) => (
                 <div key={index} className="cart-row">
                   <div className="item-image">
-                    <img src={item.restaurantIcon} alt={item.restaurantName} />
+                    <img
+                      src={item.restaurantIcon}
+                      alt={item.restaurantName}
+                    />
                   </div>
                   <div className="item-details">
                     <h3>{item.itemName}</h3>
-                    <p className="restaurant-ref">from {item.restaurantName}</p>
-                    <span className="unit-price">{item.price} each</span>
+                    <p className="restaurant-ref">
+                      from {item.restaurantName}
+                    </p>
+                    <span className="unit-price">
+                      {item.price} each
+                    </span>
                   </div>
                   <div className="item-actions">
-
                     <span className="qty-badge">{item.quantity}x</span>
                     <button
                       className="remove-btn"
                       onClick={() =>
-                        removeFromCart(item.restaurantId, item.itemName)
+                        removeFromCart(
+                          item.restaurantId,
+                          item.itemName
+                        )
                       }
                     >
                       Remove
                     </button>
                   </div>
-                  <div className="item-total-price">
-
-                  </div>
+                  <div className="item-total-price"></div>
                 </div>
               ))}
             </div>
+
             <div className="cart-actions-row">
-              <button className="clear-cart-text-btn" onClick={clearCart}>
+              <button
+                className="clear-cart-text-btn"
+                onClick={clearCart}
+              >
                 Clear Cart
               </button>
               <Link to="/shop" className="continue-shopping-link">
@@ -73,28 +98,37 @@ function CartPage() {
           <div className="cart-summary-section">
             <div className="summary-card">
               <h2>Order Summary</h2>
+
               <div className="summary-row">
                 <span>Subtotal</span>
                 <span>€{totalPrice.toFixed(2)}</span>
               </div>
+
               <div className="summary-row">
                 <span>Delivery Fee</span>
                 <span>€2.99</span>
               </div>
+
               <div className="summary-row">
                 <span>Service Fee</span>
                 <span>€1.50</span>
               </div>
+
               <div className="divider"></div>
+
               <div className="summary-total">
                 <span>Total</span>
-                <span>€{(totalPrice + 2.99 + 1.50).toFixed(2)}</span>
+                <span>
+                  €{(totalPrice + 2.99 + 1.5).toFixed(2)}
+                </span>
               </div>
-              <Link to="/checkout">
-                <button className="checkout-btn-large">
-                  Proceed to Checkout
-                </button>
-              </Link>
+
+              <button
+                className="checkout-btn-large"
+                onClick={handleProceedToCheckout}
+              >
+                Proceed to Checkout
+              </button>
             </div>
           </div>
         </div>

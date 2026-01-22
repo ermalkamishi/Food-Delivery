@@ -149,6 +149,7 @@
   border-radius: 8px;
   display: inline-block;
   font-size: 0.9rem;
+  margin-bottom: 15px;
 }
 
 .auth-message:empty {
