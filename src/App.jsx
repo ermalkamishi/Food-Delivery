@@ -20,6 +20,8 @@ import CheckoutPage from './pages/CheckOut';
 
 import LoginPage from './pages/Login';
 import SignUpPage from './pages/Signup';
+import TrackOrder from './pages/TrackOrder';
+import DeliveryReview from './pages/DeliveryReview';
 
 import { CartProvider } from "./pages/CartContext";
 import { useEffect, useState } from 'react';
@@ -64,6 +66,8 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/shop/:id" element={<ShopDetailed />} />
         <Route path="/cart" element={<CartPage user={user} />} />
+        <Route path="/track/:orderId" element={<TrackOrder />} />
+        <Route path="/delivery-review" element={<DeliveryReview />} />
 
         <Route
           path="/login"

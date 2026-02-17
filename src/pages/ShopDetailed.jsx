@@ -1,6 +1,7 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { restaurants } from "../data";
+import { reviews } from "../reviews";
 import { CartContext } from "./CartContext";
 import "./ShopDetailed.css";
 
@@ -8,6 +9,12 @@ function ShopDetailed() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { addToCart, removeFromCart, cartItems } = useContext(CartContext);
+
+  const [showModal, setShowModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [details, setDetails] = useState(null);
+  const [loadingDetails, setLoadingDetails] = useState(false);
+  const [error, setError] = useState(null);
 
   const restaurant = restaurants.find((res) => res.id === id);
   if (!restaurant) return <h2>Restaurant not found</h2>;
@@ -19,6 +26,37 @@ function ShopDetailed() {
         i.itemName === itemName
     );
     return item ? item.quantity : 0;
+  };
+
+  const fetchItemDetails = async (itemName) => {
+    setLoadingDetails(true);
+    setDetails(null);
+    setError(null);
+    setSelectedItem(itemName);
+    setShowModal(true);
+
+    try {
+      // User requested to explore API key as much as possible
+      const response = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(itemName)}&addRecipeInformation=true&addRecipeNutrition=true&number=1&apiKey=1e38e7f2da8441bdb2106aad38e7dc09`
+      );
+      const data = await response.json();
+      if (data.results && data.results.length > 0) {
+        setDetails(data.results[0]);
+      } else {
+        setError("We couldn't find specific ingredients for this item, but it sure tastes good!");
+      }
+    } catch (err) {
+      setError("Unable to connect to the food database. Please try again later.");
+    } finally {
+      setLoadingDetails(false);
+    }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setDetails(null);
+    setSelectedItem(null);
   };
 
   return (
@@ -34,10 +72,12 @@ function ShopDetailed() {
             />
             <div className="hero-text-content">
               <h1>{restaurant.name}</h1>
-              <p className="hero-desc">
-                {restaurant.shortDescription} •{" "}
-                <span className="rating">⭐ 4.8 (500+)</span>
-              </p>
+              <div className="hero-stats">
+                <span className="hero-rating">⭐ {restaurant.rating}</span>
+                <span className="hero-reviews">({restaurant.reviewsCount}+ Reviews)</span>
+                <span className="hero-moods">{restaurant.moods?.join(" • ")}</span>
+              </div>
+              <p className="hero-desc">{restaurant.shortDescription}</p>
               <div className="hero-tags">
                 {restaurant.highlights.map((tag, index) => (
                   <span key={index} className="tag">
@@ -65,9 +105,28 @@ function ShopDetailed() {
             <div className="menu-grid">
               {restaurant.menu.map((item, index) => {
                 const quantity = getQuantity(item.name);
+                // Seed some ratings for items
+                const itemRating = (4 + Math.random()).toFixed(1);
                 return (
                   <div key={index} className={`menu-card ${quantity > 0 ? "active-card" : ""}`}>
+                    <div className="menu-card-image-container">
+                      <img
+                        src={`https://placehold.co/400x300?text=${encodeURIComponent(item.name)}`}
+                        alt={item.name}
+                        className="menu-card-img"
+                      />
+                      <button
+                        className="view-details-btn"
+                        onClick={() => fetchItemDetails(item.name)}
+                      >
+                        View Details ℹ️
+                      </button>
+                    </div>
                     <div className="menu-info">
+                      <div className="item-rating">
+                        <span className="star">★</span>
+                        <span>{itemRating}</span>
+                      </div>
                       <h3>{item.name}</h3>
                       <span className="price">{item.price}</span>
                     </div>
@@ -98,6 +157,21 @@ function ShopDetailed() {
               })}
             </div>
           </div>
+
+          <div className="customer-reviews-section">
+            <h2>What People Are Saying</h2>
+            <div className="reviews-list">
+              {reviews.slice(0, 3).map((review) => (
+                <div key={review.id} className="detail-review-card">
+                  <div className="review-header">
+                    <span className="reviewer-name">{review.name}</span>
+                    <span className="review-stars">{"★".repeat(review.rating)}</span>
+                  </div>
+                  <p className="review-text">"{review.text}"</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="sidebar">
@@ -120,6 +194,15 @@ function ShopDetailed() {
                     </div>
                   ))}
                 <div className="divider"></div>
+                <div className="cart-total">
+                  <span>Total</span>
+                  <span>
+                    ${cartItems
+                      .filter((i) => i.restaurantId === restaurant.id)
+                      .reduce((sum, item) => sum + parseFloat(item.price.replace('$', '')) * item.quantity, 0)
+                      .toFixed(2)}
+                  </span>
+                </div>
                 <button
                   className="checkout-btn"
                   onClick={() => navigate("/cart")}
@@ -131,6 +214,55 @@ function ShopDetailed() {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="modal-content glass-effect" onClick={(e) => e.stopPropagation()}>
+            <button className="close-modal" onClick={closeModal}>&times;</button>
+            {loadingDetails ? (
+              <div className="loading-spinner">
+                <div className="spinner"></div>
+                <p>Fetching food secrets...</p>
+              </div>
+            ) : error ? (
+              <div className="error-msg">
+                <p>{error}</p>
+                <button className="modal-btn" onClick={closeModal}>Back to Menu</button>
+              </div>
+            ) : details ? (
+              <div className="item-details">
+                <img src={details.image} alt={selectedItem} className="details-img" />
+                <h2>{selectedItem}</h2>
+                <div className="details-scroll-content">
+                  <div className="details-section">
+                    <h3>🌿 Ingredients</h3>
+                    <ul className="ingredients-list">
+                      {details.extendedIngredients?.map((ing, i) => (
+                        <li key={i}>{ing.original}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="details-section">
+                    <h3>📊 Nutrition (per serving)</h3>
+                    <div className="nutrition-grid">
+                      {details.nutrition?.nutrients.slice(0, 4).map((n, i) => (
+                        <div key={i} className="nutrition-item">
+                          <span className="n-label">{n.name}</span>
+                          <span className="n-value">{n.amount}{n.unit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="details-section">
+                    <h3>💡 Fun Fact</h3>
+                    <p dangerouslySetInnerHTML={{ __html: details.summary?.split('. ')[0] + '.' }} />
+                  </div>
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -7,10 +7,20 @@ import "./Shop.css";
 function Shop() {
   const [search, setSearch] = useState("");
   const [visibleCount, setVisibleCount] = useState(8);
+  const [activeMood, setActiveMood] = useState("All");
 
-  const filteredRestaurants = restaurants.filter((restaurant) =>
-    restaurant.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const moods = [
+    { name: "All", icon: "🍱" },
+    { name: "Cheat Day", icon: "🍔" },
+    { name: "Healthy Vibes", icon: "🥗" },
+    { name: "Quick Fix", icon: "🚀" },
+  ];
+
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    const matchesSearch = restaurant.name.toLowerCase().includes(search.toLowerCase());
+    const matchesMood = activeMood === "All" || (restaurant.moods && restaurant.moods.includes(activeMood));
+    return matchesSearch && matchesMood;
+  });
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 8);
@@ -27,6 +37,25 @@ function Shop() {
       </div>
 
       <div className="shop-container">
+        <div className="mood-filter-section">
+          <h3>What's your mood?</h3>
+          <div className="mood-buttons">
+            {moods.map((mood) => (
+              <button
+                key={mood.name}
+                className={`mood-btn ${activeMood === mood.name ? "active" : ""}`}
+                onClick={() => {
+                  setActiveMood(mood.name);
+                  setVisibleCount(8); // Reset pagination on filter change
+                }}
+              >
+                <span className="mood-icon">{mood.icon}</span>
+                <span className="mood-name">{mood.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="search-section">
           <div className="search-box">
             <span className="search-icon">🔍</span>
@@ -59,6 +88,11 @@ function Shop() {
                       )}
                     </div>
                     <div className="card-info">
+                      <div className="card-rating">
+                        <span className="rating-star">★</span>
+                        <span className="rating-value">{restaurant.rating}</span>
+                        <span className="rating-count">({restaurant.reviewsCount}+ reviews)</span>
+                      </div>
                       <h2>{restaurant.name}</h2>
                       <span className="cuisine-tag">{restaurant.shortDescription}</span>
                       <p className="highlights">

@@ -17,6 +17,8 @@ function CheckoutPage() {
     payment: "cash",
   });
 
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
   const totalPrice = cartItems.reduce(
     (sum, item) =>
       sum + Number(item.price.replace("$", "")) * item.quantity,
@@ -66,22 +68,27 @@ function CheckoutPage() {
     emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log('SUCCESS!', response.status, response.text);
-        alert("Order placed successfully! A confirmation email has been sent.");
+        const orderId = templateParams.order_id;
+        setIsRedirecting(true);
         clearCart();
+        navigate(`/track/${orderId}`);
       }, (err) => {
         console.log('FAILED...', err);
-        alert("Order placed, but failed to send email. Please contact support.");
+        // Still navigate to tracker as the order is conceptually placed
+        const orderId = templateParams.order_id;
+        setIsRedirecting(true);
         clearCart();
+        navigate(`/track/${orderId}`);
       });
   };
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (cartItems.length === 0) {
+    if (cartItems.length === 0 && !isRedirecting) {
       navigate("/");
     }
-  }, [cartItems, navigate]);
+  }, [cartItems, navigate, isRedirecting]);
 
   useEffect(() => {
     if (auth.currentUser?.email) {

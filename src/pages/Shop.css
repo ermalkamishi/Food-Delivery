@@ -75,6 +75,61 @@
   box-shadow: 0 15px 30px rgba(255, 77, 79, 0.3);
 }
 
+.mood-filter-section {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.mood-filter-section h3 {
+  font-size: 1.2rem;
+  color: #636e72;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.mood-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.mood-btn {
+  background: white;
+  border: 1px solid #eee;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.mood-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  border-color: #ff4d4f;
+}
+
+.mood-btn.active {
+  background: #ff4d4f;
+  color: white;
+  border-color: #ff4d4f;
+  box-shadow: 0 10px 20px rgba(255, 77, 79, 0.2);
+}
+
+.mood-icon {
+  font-size: 1.4rem;
+}
+
+.mood-name {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
 .search-section {
   display: flex;
   justify-content: center;
@@ -205,6 +260,29 @@
   font-size: 0.95rem;
   color: #636e72;
   line-height: 1.5;
+  margin-top: auto;
+}
+
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.rating-star {
+  color: #ffa502;
+  font-size: 1.1rem;
+}
+
+.rating-value {
+  font-weight: 700;
+  color: #2d3436;
+}
+
+.rating-count {
+  color: #b2bec3;
+  font-size: 0.85rem;
 }
 
 .no-results {

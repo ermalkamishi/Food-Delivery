@@ -34,6 +34,9 @@ export const restaurants = [
     icon: mcdIcon,
     shortDescription: "The world-famous fast food chain serving burgers and fries.",
     highlights: ["Big Mac", "Chicken McNuggets", "Fries", "Whopper"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.5,
+    reviewsCount: 1200,
     longDescription:
       "McDonald's is an iconic fast-food brand known for its burgers, fries, and quick service. They offer a wide variety of meals that are loved globally for their taste, consistency, and convenience.",
     menu: [
@@ -50,6 +53,9 @@ export const restaurants = [
     icon: bkkIcon,
     shortDescription: "Home of the Whopper and flame-grilled burgers.",
     highlights: ["Whopper", "Chicken Fries", "Onion Rings"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.2,
+    reviewsCount: 850,
     longDescription:
       "Burger King is a global fast-food chain famous for its flame-grilled burgers and signature Whopper. They focus on bold flavors and quality ingredients to satisfy burger lovers everywhere.",
     menu: [
@@ -66,6 +72,9 @@ export const restaurants = [
     icon: kfcIcon,
     shortDescription: "Famous for its crispy fried chicken and secret herbs.",
     highlights: ["Original Recipe Chicken", "Chicken Wings", "Popcorn Chicken"],
+    moods: ["Cheat Day"],
+    rating: 4.3,
+    reviewsCount: 980,
     longDescription:
       "KFC, or Kentucky Fried Chicken, is a global fried chicken brand known for its secret blend of 11 herbs and spices. They serve everything from classic fried chicken to sandwiches and sides loved by millions worldwide.",
     menu: [
@@ -82,6 +91,9 @@ export const restaurants = [
     icon: subIcon,
     shortDescription: "Freshly made sandwiches and salads, your way.",
     highlights: ["Italian B.M.T.", "Turkey Breast", "Veggie Delight"],
+    moods: ["Healthy Vibes", "Quick Fix"],
+    rating: 4.0,
+    reviewsCount: 720,
     longDescription:
       "Subway is a fast-food chain known for customizable sandwiches and fresh ingredients. Customers can choose their bread, fillings, and toppings to make a healthy and tasty meal in minutes.",
     menu: [
@@ -98,6 +110,9 @@ export const restaurants = [
     icon: domIcon,
     shortDescription: "Hot, cheesy pizzas delivered right to your door.",
     highlights: ["Pepperoni Pizza", "Cheese Pizza", "Chicken Pizza"],
+    moods: ["Cheat Day"],
+    rating: 4.6,
+    reviewsCount: 1540,
     longDescription:
       "Domino's is a global pizza delivery chain famous for its fast service and variety of pizza options. From classic flavors to customized toppings, it satisfies pizza lovers everywhere.",
     menu: [
@@ -114,6 +129,9 @@ export const restaurants = [
     icon: pizIcon,
     shortDescription: "Family-friendly pizza with classic and specialty options.",
     highlights: ["Supreme Pizza", "Meat Lover's Pizza", "Cheese Sticks"],
+    moods: ["Cheat Day"],
+    rating: 4.4,
+    reviewsCount: 1100,
     longDescription:
       "Pizza Hut is a well-known pizza chain offering a wide range of pizzas, sides, and desserts. Known for its dine-in and delivery services, it is loved for its variety and classic flavors.",
     menu: [
@@ -130,6 +148,9 @@ export const restaurants = [
     icon: tacIcon,
     shortDescription: "Mexican-inspired fast food with bold flavors.",
     highlights: ["Crunchwrap Supreme", "Doritos Locos Taco", "Burritos"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.1,
+    reviewsCount: 920,
     longDescription:
       "Taco Bell offers a unique menu of Mexican-inspired fast food. Famous for its bold flavors and creative items, it has become a go-to for quick and flavorful meals.",
     menu: [
@@ -146,6 +167,9 @@ export const restaurants = [
     icon: wendIcon,
     shortDescription: "Fresh, made-to-order burgers with signature sides.",
     highlights: ["Baconator", "Spicy Chicken Sandwich", "Frosty"],
+    moods: ["Cheat Day"],
+    rating: 4.3,
+    reviewsCount: 880,
     longDescription:
       "Wendy's is a fast-food chain focusing on fresh, made-to-order burgers and sides. Known for its Frosty desserts and unique burger offerings, Wendy's is a favorite in the US and worldwide.",
     menu: [
@@ -162,6 +186,9 @@ export const restaurants = [
     icon: chkIcon,
     shortDescription: "Specialty chicken sandwiches and waffle fries.",
     highlights: ["Chicken Sandwich", "Waffle Fries", "Chicken Nuggets"],
+    moods: ["Cheat Day"],
+    rating: 4.8,
+    reviewsCount: 2100,
     longDescription:
       "Chick-fil-A specializes in chicken sandwiches and sides. Their focus on quality ingredients, customer service, and signature sauces makes them a beloved fast-food chain.",
     menu: [
@@ -178,6 +205,9 @@ export const restaurants = [
     icon: panIcon,
     shortDescription: "Fast-casual Chinese food with bold flavors.",
     highlights: ["Orange Chicken", "Beijing Beef", "Kung Pao Chicken"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.2,
+    reviewsCount: 750,
     longDescription:
       "Panda Express is a popular chain serving American Chinese cuisine. Known for its flavorful entrees and quick service, it brings tasty Chinese dishes to a fast-food format.",
     menu: [
@@ -194,6 +224,9 @@ export const restaurants = [
     icon: qdoIcon,
     shortDescription: "Customizable Mexican-style burritos and bowls.",
     highlights: ["Burrito Bowl", "Tacos", "Nachos"],
+    moods: ["Healthy Vibes"],
+    rating: 4.4,
+    reviewsCount: 680,
     longDescription:
       "Qdoba offers Mexican-inspired fast-casual meals, letting customers build their burritos, bowls, and tacos exactly how they like. Fresh ingredients and bold flavors make it a favorite.",
     menu: [
@@ -210,6 +243,9 @@ export const restaurants = [
     icon: panpIcon,
     shortDescription: "Fresh bakery items, sandwiches, and soups.",
     highlights: ["Broccoli Cheddar Soup", "Turkey Sandwich", "Bagels"],
+    moods: ["Healthy Vibes", "Quick Fix"],
+    rating: 4.5,
+    reviewsCount: 1300,
     longDescription:
       "Panera Bread is a fast-casual bakery-cafe chain known for fresh bread, sandwiches, salads, and soups. They focus on quality ingredients and healthy options for every meal.",
     menu: [
@@ -226,6 +262,9 @@ export const restaurants = [
     icon: chipIcon,
     shortDescription: "Fresh, customizable burritos and bowls.",
     highlights: ["Burrito", "Bowl", "Guacamole"],
+    moods: ["Healthy Vibes", "Cheat Day"],
+    rating: 4.6,
+    reviewsCount: 3200,
     longDescription:
       "Chipotle is a fast-casual Mexican grill focusing on fresh, customizable meals. Known for their burritos, bowls, and high-quality ingredients, it’s a popular choice for flavorful, quick meals.",
     menu: [
@@ -242,6 +281,9 @@ export const restaurants = [
     icon: shakeIcon,
     shortDescription: "Gourmet burgers, fries, and shakes.",
     highlights: ["ShackBurger", "Cheese Fries", "Milkshakes"],
+    moods: ["Cheat Day"],
+    rating: 4.7,
+    reviewsCount: 1800,
     longDescription:
       "Shake Shack is known for its high-quality burgers, crinkle-cut fries, and creamy milkshakes. Combining fast service with premium ingredients, it offers a more upscale fast-food experience.",
     menu: [
@@ -258,6 +300,9 @@ export const restaurants = [
     icon: dunkIcon,
     shortDescription: "Coffee, donuts, and breakfast sandwiches.",
     highlights: ["Glazed Donut", "Coffee", "Bagel Sandwich"],
+    moods: ["Quick Fix"],
+    rating: 4.4,
+    reviewsCount: 1400,
     longDescription:
       "Dunkin' is a popular chain serving coffee, donuts, and breakfast items. Known for quick service and convenient options, it’s a go-to for morning cravings and coffee lovers.",
     menu: [
@@ -274,6 +319,9 @@ export const restaurants = [
     icon: fivegIcon,
     shortDescription: "Fresh, made-to-order burgers and hand-cut fries.",
     highlights: ["Bacon Cheeseburger", "Little Fries", "Milkshakes"],
+    moods: ["Cheat Day"],
+    rating: 4.6,
+    reviewsCount: 1600,
     longDescription:
       "Five Guys specializes in fresh, customizable burgers, hot dogs, and hand-cut fries. Known for generous portions and quality ingredients, it’s a favorite for burger lovers.",
     menu: [
@@ -290,6 +338,9 @@ export const restaurants = [
     icon: hardeesIcon,
     shortDescription: "Hearty burgers and breakfast all day.",
     highlights: ["Famous Star Burger", "Frisco Breakfast Sandwich", "Onion Rings"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.0,
+    reviewsCount: 520,
     longDescription:
       "Hardee's offers classic American fast food, with a focus on thick, juicy burgers and a full breakfast menu served all day. Known for bold flavors and hearty portions.",
     menu: [
@@ -306,6 +357,9 @@ export const restaurants = [
     icon: sbuxIcon,
     shortDescription: "Coffeehouse serving handcrafted drinks and snacks.",
     highlights: ["Caffe Latte", "Frappuccino", "Pumpkin Spice Latte"],
+    moods: ["Quick Fix", "Healthy Vibes"],
+    rating: 4.7,
+    reviewsCount: 4500,
     longDescription:
       "Starbucks is a global coffeehouse chain offering a wide range of handcrafted coffee and tea beverages, pastries, and snacks. A popular spot for meetings, work, or relaxation.",
     menu: [
@@ -322,6 +376,9 @@ export const restaurants = [
     icon: arbyIcon,
     shortDescription: "We Have The Meats®.",
     highlights: ["Classic Roast Beef", "Curly Fries", "Jamocha Shake"],
+    moods: ["Cheat Day"],
+    rating: 4.1,
+    reviewsCount: 640,
     longDescription:
       "Arby's is known for its roast beef sandwiches and curly fries. A different take on fast food with a focus on deli-style sandwiches.",
     menu: [
@@ -338,6 +395,9 @@ export const restaurants = [
     icon: popeyesIcon,
     shortDescription: "Louisiana-style fried chicken.",
     highlights: ["Chicken Sandwich", "Spicy Chicken", "Biscuits"],
+    moods: ["Cheat Day"],
+    rating: 4.5,
+    reviewsCount: 1450,
     longDescription:
       "Popeyes brings the flavor of New Orleans with its spicy fried chicken, red beans and rice, and famous buttery biscuits.",
     menu: [
@@ -354,6 +414,9 @@ export const restaurants = [
     icon: sonicIcon,
     shortDescription: "America's Drive-In with endless drink combos.",
     highlights: ["Cherry Limeade", "Corn Dog", "Tots"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.2,
+    reviewsCount: 890,
     longDescription:
       "Sonic offers a nostalgic drive-in experience with carhops delivering burgers, hot dogs, and a huge variety of slushies and shakes.",
     menu: [
@@ -370,6 +433,9 @@ export const restaurants = [
     icon: inIcon,
     shortDescription: "Fresh, simple burgers from the West Coast.",
     highlights: ["Double-Double", "Animal Style Fries", "Shake"],
+    moods: ["Cheat Day"],
+    rating: 4.9,
+    reviewsCount: 5200,
     longDescription:
       "A cult favorite known for its simple menu, fresh ingredients, and 'Not So Secret' menu items like Animal Style burgers.",
     menu: [
@@ -386,6 +452,9 @@ export const restaurants = [
     icon: jgIcon,
     shortDescription: "Freaky Fast sandwiches.",
     highlights: ["The Pepe", "Turkey Tom", "Vito"],
+    moods: ["Quick Fix", "Healthy Vibes"],
+    rating: 4.3,
+    reviewsCount: 780,
     longDescription:
       "Jimmy John's prides itself on speed and fresh ingredients, serving cold subs on fresh-baked bread in seconds.",
     menu: [
@@ -402,6 +471,9 @@ export const restaurants = [
     icon: wingstopIcon,
     shortDescription: "The wing experts.",
     highlights: ["Lemon Pepper Wings", "Mango Habanero", "Voodoo Fries"],
+    moods: ["Cheat Day"],
+    rating: 4.5,
+    reviewsCount: 1250,
     longDescription:
       "Wingstop focuses on one thing: wings. With a variety of bold flavors and famous seasoned fries, it's a favorite for game day.",
     menu: [
@@ -418,6 +490,9 @@ export const restaurants = [
     icon: dairyqueenIcon,
     shortDescription: "Burgers, baskets, and Blizzards.",
     highlights: ["Blizzard", "Chicken Strip Basket", "GrillBurger"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.1,
+    reviewsCount: 670,
     longDescription:
       "Dairy Queen serves up hot eats and cool treats. Famous for the upside-down Blizzard and satisfying meal baskets.",
     menu: [
@@ -434,6 +509,9 @@ export const restaurants = [
     icon: jackintheboxIcon,
     shortDescription: "Burgers, tacos, and everything in between.",
     highlights: ["Tacos (2)", "Jumbo Jack", "Curly Fries"],
+    moods: ["Cheat Day", "Quick Fix"],
+    rating: 4.0,
+    reviewsCount: 540,
     longDescription:
       "Jack in the Box has a quirky, diverse menu ranging from burgers to egg rolls and tacos, available late into the night.",
     menu: [
@@ -450,6 +528,9 @@ export const restaurants = [
     icon: dennysIcon,
     shortDescription: "America's Diner is always open.",
     highlights: ["Grand Slam", "Moons Over My Hammy", "Pancakes"],
+    moods: ["Quick Fix"],
+    rating: 4.2,
+    reviewsCount: 890,
     longDescription:
       "A classic American diner serving breakfast, lunch, and dinner 24/7. Known for hearty breakfast platters.",
     menu: [
@@ -466,6 +547,9 @@ export const restaurants = [
     icon: cheesecakefactoryIcon,
     shortDescription: "Massive menu and legendary cheesecake.",
     highlights: ["Cheesecake", "Avocado Eggrolls", "Chicken Madeira"],
+    moods: ["Cheat Day", "Healthy Vibes"],
+    rating: 4.7,
+    reviewsCount: 3800,
     longDescription:
       "Known for its impossibly large menu and decadent cheesecakes, this restaurant offers something for absolutely everyone in an upscale casual setting.",
     menu: [
