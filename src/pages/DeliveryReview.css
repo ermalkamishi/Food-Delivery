@@ -160,3 +160,26 @@
     background: #000;
     transform: translateY(-2px);
 }
+
+@media (max-width: 600px) {
+    .review-container {
+        padding: 2.5rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .review-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .star-btn {
+        font-size: 2.5rem;
+    }
+
+    .success-state {
+        padding: 3rem 1rem;
+    }
+
+    .review-wrapper {
+        padding: 1rem;
+    }
+}

@@ -190,11 +190,33 @@
 }
 
 @media (max-width: 768px) {
+    .track-container {
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .track-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .main-icon-container {
+        font-size: 4rem;
+    }
+
+    .status-text {
+        font-size: 1.5rem;
+    }
+
+    .status-subtext {
+        font-size: 0.95rem;
+    }
+
     .track-timeline {
         flex-direction: column;
         gap: 3rem;
         align-items: flex-start;
         padding-left: 3rem;
+        margin-top: 2rem;
     }
 
     .step-line {
@@ -207,5 +229,9 @@
     .line-progress {
         width: 100% !important;
         height: 0;
+    }
+
+    .track-wrapper {
+        padding: 1rem;
     }
 }

@@ -375,4 +375,39 @@
   .shop-header h1 {
     font-size: 2.5rem;
   }
+
+  .mood-buttons {
+    gap: 0.8rem;
+  }
+
+  .search-box {
+    max-width: 90%;
+  }
+
+  .restaurant-list {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shop-header h1 {
+    font-size: 2rem;
+  }
+
+  .mood-btn {
+    padding: 0.6rem 1rem;
+  }
+
+  .mood-name {
+    font-size: 0.85rem;
+  }
+
+  .shop-container {
+    padding: 0 1.5rem 4rem;
+  }
+
+  .restaurant-list {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
