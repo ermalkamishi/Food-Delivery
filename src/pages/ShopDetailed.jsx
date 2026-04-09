@@ -36,7 +36,6 @@ function ShopDetailed() {
     setShowModal(true);
 
     try {
-      // User requested to explore API key as much as possible
       const response = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(itemName)}&addRecipeInformation=true&addRecipeNutrition=true&number=1&apiKey=1e38e7f2da8441bdb2106aad38e7dc09`
       );
@@ -105,7 +104,6 @@ function ShopDetailed() {
             <div className="menu-grid">
               {restaurant.menu.map((item, index) => {
                 const quantity = getQuantity(item.name);
-                // Seed some ratings for items
                 const itemRating = (4 + Math.random()).toFixed(1);
                 return (
                   <div key={index} className={`menu-card ${quantity > 0 ? "active-card" : ""}`}>

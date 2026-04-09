@@ -34,8 +34,6 @@ function Header({ user }) {
           </div>
           <span className="logo-text">TastyWay</span>
         </Link>
-
-        {/* Mobile Toggle Button */}
         <button className="mobile-menu-toggle" onClick={toggleMobileMenu}>
           {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
         </button>

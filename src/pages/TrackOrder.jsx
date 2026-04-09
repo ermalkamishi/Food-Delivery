@@ -36,7 +36,7 @@ function TrackOrder() {
         }
     }, [currentStep]);
 
-    // Safe access to step data
+
     const activeStep = steps[currentStep - 1] || steps[steps.length - 1];
 
     return (

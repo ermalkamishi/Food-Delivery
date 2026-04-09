@@ -15,7 +15,6 @@ function DeliveryReview() {
             alert("Please select a rating before submitting.");
             return;
         }
-        // Simulation of API call
         setSubmitted(true);
     };
 

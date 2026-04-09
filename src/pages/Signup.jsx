@@ -34,6 +34,9 @@ function SignUpPage() {
 
   return (
     <div className="auth-container">
+            <span onClick={() => navigate(-1)} className="auth-back">
+          &larr; Go back
+        </span>
       <div className="auth-card">
         <h2 className="auth-title">Create Account</h2>
         <form className="auth-form" autoComplete="off">

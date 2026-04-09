@@ -46,7 +46,7 @@ function Shop() {
                 className={`mood-btn ${activeMood === mood.name ? "active" : ""}`}
                 onClick={() => {
                   setActiveMood(mood.name);
-                  setVisibleCount(8); // Reset pagination on filter change
+                  setVisibleCount(8); 
                 }}
               >
                 <span className="mood-icon">{mood.icon}</span>

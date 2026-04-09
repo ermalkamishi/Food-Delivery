@@ -152,6 +152,35 @@
   margin-bottom: 15px;
 }
 
+
+.auth-back {
+  position: absolute;
+  top: 2.5rem;
+  left: 3rem;
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #666666; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.auth-back:hover {
+  color: #1a1a1a; 
+  transform: translateX(-6px); 
+}
+
+@media screen and (max-width: 768px) {
+  .auth-back {
+    top: 1.5rem;
+    left: 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
 .auth-message:empty {
   display: none;
   margin: 0;

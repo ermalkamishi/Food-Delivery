@@ -74,7 +74,6 @@ function CheckoutPage() {
         navigate(`/track/${orderId}`);
       }, (err) => {
         console.log('FAILED...', err);
-        // Still navigate to tracker as the order is conceptually placed
         const orderId = templateParams.order_id;
         setIsRedirecting(true);
         clearCart();
