@@ -14,11 +14,37 @@ function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Thank you for contacting us!");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    
+    // Create the FormData object as recommended by Web3Forms
+    const formDataToSubmit = new FormData();
+    formDataToSubmit.append("access_key", "1784b3fd-b41f-4002-8106-e6be11a9fc08");
+    formDataToSubmit.append("name", formData.name);
+    formDataToSubmit.append("email", formData.email);
+    formDataToSubmit.append("subject", formData.subject);
+    formDataToSubmit.append("message", formData.message);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSubmit,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        console.log("Form submitted:", formData);
+        alert("Thank you for contacting us!");
+        // Reset the state to clear the inputs
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        alert("Submission failed. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      alert("An error occurred. Check your internet connection.");
+    }
   };
 
   return (
@@ -60,6 +86,7 @@ function Contact() {
           </div>
         </div>
         <div className="contact-form-col">
+          {/* Action and Method removed because we handle it in handleSubmit */}
           <form onSubmit={handleSubmit} className="premium-contact-form">
             <div className="form-group">
               <label>Name</label>
@@ -96,20 +123,23 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="send-msg-btn">Send Message</button>
+            <button type="submit" className="send-msg-btn">
+              Send Message
+            </button>
           </form>
         </div>
       </div>
 
       <div className="map-section-premium">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1387.3162398124762!2d21.433123151357837!3d42.023832619348575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135415195beb73fd%3A0x25495d7604637ca8!2sHigh%20School%20%22Zef%20Lush%20Marku%22!5e0!3m2!1sen!2smk!4v1768514502689!5m2!1sen!2smk"
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1387.3162398124762!2d21.433123151357837!3d42.023832619348575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135415195beb73fd%3A0x25495d7604637ca8!2sHigh%20School%20%22Zef%20Lush%20Marku%22!5e0!3m2!1sen!2smk!4v1768514502689!5m2!1sen!2smk"
           width="100%"
           height="450"
           style={{ border: 0 }}
           allowFullScreen=""
           loading="lazy"
-          title="TastyWay Location">
-        </iframe>
+          title="TastyWay Location"
+        ></iframe>
       </div>
     </div>
   );
