@@ -94,7 +94,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} TastyWay. All rights reserved.</p>
-        <p className="designer-credit">Designed by Weblixo</p>
+        <p className="designer-credit">Designed by Ermal Kamishi</p>
       </div>
     </footer>
   );
